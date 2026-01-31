@@ -213,6 +213,7 @@ void initializeRobot() {
     left_motors.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);   // Prevents drifting, smooth control
     right_motors.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);  // Prevents drifting, smooth control
     Outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);        // Holds position, prevents backdriving
+    Intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);         // Prevents backdriving when stopped
     
     Outtake.set_reversed(false);
     Intake.set_reversed(true);
