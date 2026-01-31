@@ -10,5 +10,5 @@ private:
 public:
     IntakeControl();
     void update(bool isBlocked = false);
-    int getPower();
+    int getVelocity();
 };

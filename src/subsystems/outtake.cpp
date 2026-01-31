@@ -2,7 +2,7 @@
 #include "robot_config.h"
 
 OuttakeControl::OuttakeControl()
-    : toggleForward(false), toggleReverse(false),
+    : toggleForward(false), comboMode(false),
       L1_lastState(false), L2_lastState(false),
       midScoringMode(false), X_lastState(false),
       unjamStartTime(0), isUnjamming(false) {}
@@ -14,8 +14,8 @@ void OuttakeControl::update() {
             isUnjamming = false;
             // Don't set intake here - let it fall through to mid-scoring mode logic below
         } else {
-            Intake.move(127); // Unjam (reverse)
-            Outtake.move(-127); // Make sure outtake also runs during unjam
+            Intake.move_velocity(600);   // Unjam (reverse) - velocity control
+            Outtake.move_velocity(-600); // Make sure outtake also runs during unjam
             return; // Exit early during unjam
         }
     }
@@ -26,7 +26,9 @@ void OuttakeControl::update() {
         midScoringMode = !midScoringMode;
         
         if (midScoringMode) {
-            // ENTERING mid-scoring mode
+            // ENTERING mid-scoring mode - turn off combo mode
+            comboMode = false;
+            toggleForward = false;
             MidScoring.set_value(true); // Retract piston
             isUnjamming = true;
             unjamStartTime = pros::millis();
@@ -34,57 +36,75 @@ void OuttakeControl::update() {
             // EXITING mid-scoring mode
             MidScoring.set_value(false); // Extend piston
             isUnjamming = false;
-            Intake.move(0); // Stop intake
-            Outtake.move(0); // Stop outtake
+            Intake.move_velocity(0); // Stop intake
+            Outtake.move_velocity(0); // Stop outtake
             // Reset toggles so they start fresh
             toggleForward = false;
-            toggleReverse = false;
+            comboMode = false;
             X_lastState = X_current; // Update state BEFORE returning
             return; // Exit function immediately after turning off mid-scoring
         }
     }
     X_lastState = X_current;
 
-    int power = 0;
+    int velocity = 0;
 
     if (midScoringMode && !isUnjamming) {
         // Mid-scoring mode AFTER unjam: run intake forward and outtake reverse
-        Intake.move(-127);  // This will run continuously during mid-scoring
-        power = -127;
+        Intake.move_velocity(-600);  // This will run continuously during mid-scoring
+        velocity = -600;
         // Update last states to prevent "stored" button presses
         L1_lastState = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
         L2_lastState = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
     } else if (!midScoringMode) {
-        // Normal mode: L1/L2 control outtake
+        // Normal mode: L1 = outtake forward, L2 = combo mode (both motors)
         bool L1_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
         bool L2_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
 
+        // L1: Toggle outtake forward only
         if (L1_current && !L1_lastState) {
             toggleForward = !toggleForward;
-            if (toggleForward) toggleReverse = false;
+            if (toggleForward) comboMode = false;  // Turn off combo if turning on L1
         }
+        
+        // L2: Toggle combo mode (both intake and outtake)
         if (L2_current && !L2_lastState) {
-            toggleReverse = !toggleReverse;
-            if (toggleReverse) toggleForward = false;
+            comboMode = !comboMode;
+            if (comboMode) {
+                toggleForward = false;  // Turn off L1 toggle when entering combo
+            } else {
+                // Exiting combo mode - stop intake immediately
+                Intake.move_velocity(0);
+            }
         }
         
         L1_lastState = L1_current;
         L2_lastState = L2_current;
 
-        if (toggleForward) power = 127;
-        else if (toggleReverse) power = -127;
+        // Set motor velocities based on current mode
+        if (comboMode) {
+            Intake.move_velocity(-600);  // Intake runs in this direction
+            velocity = 600;              // Outtake forward
+        } else if (toggleForward) {
+            velocity = 600;
+        }
+        // If neither is active, velocity stays 0
     }
 
-    Outtake.move(power);
+    Outtake.move_velocity(velocity);
 }
 
-int OuttakeControl::getPower() {
-    if (midScoringMode) return -127;
-    if (toggleForward) return 127;
-    if (toggleReverse) return -127;
+int OuttakeControl::getVelocity() {
+    if (midScoringMode) return -600;
+    if (comboMode) return 600;
+    if (toggleForward) return 600;
     return 0;
 }
 
 bool OuttakeControl::isMidScoring() {
     return midScoringMode;
+}
+
+bool OuttakeControl::isComboModeActive() {
+    return comboMode;
 }

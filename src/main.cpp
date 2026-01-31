@@ -71,7 +71,7 @@ void opcontrol() {
 
         // Update subsystems
         outtake.update();
-        intake.update(outtake.isMidScoring());
+        intake.update(outtake.isMidScoring() || outtake.isComboModeActive());
         pneumatics.update();
         
         // === MOTOR TEMPERATURE MONITORING (every 2 seconds) ===

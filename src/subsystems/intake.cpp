@@ -26,12 +26,12 @@ void IntakeControl::update(bool isBlocked) {
 
     // Only move intake here if NOTblocked by outtake (mid-scoring)
     if (!isBlocked) {
-        Intake.move(getPower());
+        Intake.move_velocity(getVelocity());
     }
 }
 
-int IntakeControl::getPower() {
-    if (toggleForward) return 127;
-    if (toggleReverse) return -127;
+int IntakeControl::getVelocity() {
+    if (toggleForward) return 600;   // Blue cartridge max RPM
+    if (toggleReverse) return -600;
     return 0;
 }
