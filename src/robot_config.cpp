@@ -209,6 +209,11 @@ void initializeRobot() {
     // Non-blocking calibration - fixes "Run" mode hang
     chassis.calibrate(false);
     
+    // Set brake modes
+    left_motors.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);   // Prevents drifting, smooth control
+    right_motors.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);  // Prevents drifting, smooth control
+    Outtake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);        // Holds position, prevents backdriving
+    
     Outtake.set_reversed(false);
     Intake.set_reversed(true);
     MidScoring.set_value(false);
