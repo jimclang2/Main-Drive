@@ -11,7 +11,8 @@
         "c:\\Users\\admin\\Downloads\\Skills Auton - Latest\\include",
         "c:\\Users\\IJiae\\The Documents\\Coding\\Main-Drive\\include",
         "c:\\Users\\admin\\Documents\\Main-Drive\\include",
-        "c:\\Users\\IJiae\\Downloads\\Main-Drive-main\\include"
+        "c:\\Users\\IJiae\\Downloads\\Main-Drive-main\\include",
+        "d:\\The Documents\\Coding\\Drive\\Main-Drive\\include"
       ],
       "defines": [
         "_DEBUG",
@@ -24,7 +25,7 @@
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
-          "c:\\Users\\IJiae\\Downloads\\Main-Drive-main"
+          "d:\\The Documents\\Coding\\Drive\\Main-Drive"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

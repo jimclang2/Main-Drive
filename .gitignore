@@ -1,0 +1,20 @@
+# Build artifacts
+bin/
+.d/
+*.o
+*.a
+*.elf
+*.bin
+
+# IDE files
+.vscode/
+.cache/
+
+# Compilation database
+compile_commands.json
+
+# PROS specific
+temp.log
+temp.errors
+*.pros
+!project.pros
