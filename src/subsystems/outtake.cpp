@@ -10,7 +10,7 @@ OuttakeControl::OuttakeControl()
 void OuttakeControl::update() {
     // Handle unjam sequence
     if (isUnjamming) {
-        if (pros::millis() - unjamStartTime >= 225) {  // Time of delay
+        if (pros::millis() - unjamStartTime >= 150) {  // Time of delay
             isUnjamming = false;
             // Don't set intake here - let it fall through to mid-scoring mode logic below
         } else {
