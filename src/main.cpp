@@ -1,4 +1,4 @@
-#include "lemlib/api.hpp"
+#include "lemlib/api.hpp" // IWYU pragma: keep
 #include "pros/rtos.hpp"
 #include "main.h"
 #include "robot_config.h"

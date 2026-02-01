@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Main Drive",
+    "project_name": "Test",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -635,7 +635,7 @@
       }
     },
     "upload_options": {
-      "slot": 1,
+      "slot": 3,
       "icon": "ufo",
       "description": "Includes All Autons + Regular Drive",
       "after": "run"
