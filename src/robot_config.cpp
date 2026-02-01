@@ -2,7 +2,7 @@
 #include "pros/rtos.hpp"  // For pros::Task
 
 // Vertical Tracking Wheel
-pros::Rotation rotation_sensor(11);
+pros::Rotation rotation_sensor(-11);
 
 pros::Imu imu(13);
 
@@ -19,7 +19,7 @@ lemlib::Drivetrain drivetrain(&left_motors, // left motor group
 );
 
 // tracking wheel configuration
-lemlib::TrackingWheel vertical_tracking_wheel(&rotation_sensor, lemlib::Omniwheel::NEW_275, -.25);
+lemlib::TrackingWheel vertical_tracking_wheel(&rotation_sensor, lemlib::Omniwheel::NEW_275, .375);
 // vertical wheel, 2.75" diameter, -.25" offset from tracking center
 
 // odometry sensors configuration
@@ -31,9 +31,9 @@ lemlib::OdomSensors sensors(&vertical_tracking_wheel, // vertical tracking wheel
 );
 
 // lateral PID controller
-lemlib::ControllerSettings lateral_controller(5,   // kP
+lemlib::ControllerSettings lateral_controller(0,   // kP
                                               0,   // kI
-                                              8,   // kD
+                                              0,   // kD
                                               3,   // anti windup
                                               1,   // small error range
                                               100, // small error range timeout
@@ -43,9 +43,9 @@ lemlib::ControllerSettings lateral_controller(5,   // kP
 );
 
 // angular PID controller - TUNED
-lemlib::ControllerSettings angular_controller(1.7, // kP
+lemlib::ControllerSettings angular_controller(1   , // kP
                                               0,   // kI
-                                              14,  // kD
+                                              2.3,  // kD
                                               3,   // anti windup - ENABLE
                                               1,   // small error range, in degrees - ENABLE
                                               100, // small error range timeout - ENABLE
