@@ -9,7 +9,9 @@
 
 void initialize() {
     initializeRobot();
-    drawAutonSelector(); // Just draw it, don't block
+    // Run selector for 15 seconds in normal mode (non-competition "Run")
+    // This blocks until timeout or competition switch activates
+    runAutonSelector(15000);
 }
 
 void disabled() {}

@@ -169,24 +169,49 @@ void runAutonSelector(uint32_t timeout_ms) {
     selectorLocked = false;
     
     uint32_t startTime = pros::millis();
+    uint32_t lastRedraw = 0;  // Track when we last drew the selector
+    
     drawAutonSelector();
+    
+    // Debug: Show status on controller
+    master.print(0, 0, "Selector running");
     
     while (true) {
         // Handle input
         handleScreenTouch();
         
+        // CONTINUOUSLY REDRAW every 100ms to combat IMU calibration overwriting screen
+        if (pros::millis() - lastRedraw > 100) {
+            drawAutonSelector();
+            lastRedraw = pros::millis();
+            
+            // Show remaining time on screen
+            uint32_t elapsed = pros::millis() - startTime;
+            if (timeout_ms > 0) {
+                uint32_t remaining = (elapsed < timeout_ms) ? (timeout_ms - elapsed) / 1000 : 0;
+                pros::screen::set_pen(pros::c::COLOR_BLACK);
+                pros::screen::print(pros::E_TEXT_SMALL, 200, 220, "Time: %d", remaining);
+            }
+        }
+        
+        uint32_t elapsed = pros::millis() - startTime;
+        
         // Exit condition 1: Timeout reached (if not infinite/0)
-        if (timeout_ms > 0 && (pros::millis() - startTime > timeout_ms)) {
+        if (timeout_ms > 0 && elapsed > timeout_ms) {
             break;
         }
         
-        // Exit condition 2: Match started (Competition switch)
-        if (!pros::competition::is_disabled()) {
+        // Exit condition 2: ONLY exit for competition if BOTH connected AND enabled
+        if (pros::competition::is_connected() && 
+            !pros::competition::is_disabled() && 
+            !pros::competition::is_autonomous()) {
             break;
         }
 
         pros::delay(20);
     }
+    
+    master.print(0, 0, "Selector done   ");
 }
 
 void checkAndLockSelector(uint32_t lockDelay) {
