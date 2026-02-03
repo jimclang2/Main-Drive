@@ -31,21 +31,22 @@ lemlib::OdomSensors sensors(&vertical_tracking_wheel, // vertical tracking wheel
 );
 
 // lateral PID controller
-lemlib::ControllerSettings lateral_controller(0,   // kP
+lemlib::ControllerSettings lateral_controller(4.25,   // kP
                                               0,   // kI
-                                              0,   // kD
+                                              1,   // kD
                                               3,   // anti windup
                                               1,   // small error range
                                               100, // small error range timeout
                                               3,   // large error range
                                               500, // large error range timeout
-                                              127  // slew - START HIGH
+                                              0  // slew - START HIGH
 );
 
+
 // angular PID controller - TUNED
-lemlib::ControllerSettings angular_controller(1   , // kP
+lemlib::ControllerSettings angular_controller(.863   , // kP
                                               0,   // kI
-                                              2.3,  // kD
+                                              0.235,  // kD
                                               3,   // anti windup - ENABLE
                                               1,   // small error range, in degrees - ENABLE
                                               100, // small error range timeout - ENABLE

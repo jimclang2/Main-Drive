@@ -9,28 +9,28 @@ void skills_auton() {
     Unloader.set_value(true);
     pros::delay(300);
     chassis.moveToPoint(-31.75, -15, 2000, {.maxSpeed = 100} );
-    Intake.move(-600);
-    Outtake.move(-600);
+    Intake.move(-127);
+    Outtake.move(-127);
     chassis.moveToPoint( -32,  5, 2000, {.forwards = false, .maxSpeed = 80},false);
     pros::delay(500);
     Unloader.set_value(false);
     Intake.move(0);
     Outtake.move(0);
     chassis.turnToHeading(90, 1000);
-    chassis.moveToPoint( -51,  5, 2000, {.forwards = false, .maxSpeed = 70}); // allign
+    chassis.moveToPoint( -55,  5, 2000, {.forwards = false, .maxSpeed = 70}); // allign
     chassis.turnToHeading(0, 2000);
-    chassis.moveToPoint(-44, 85, 2000);
+    chassis.moveToPoint(-47, 85, 2000,{.maxSpeed=80});
 //_____
     chassis.turnToHeading(90, 2000);
     chassis.moveToPoint(-50, 85, 1000, {.forwards = false, .minSpeed = 60}); // allign
-    chassis.moveToPoint(-32, 90, 2000);
+    chassis.moveToPoint(-30, 90, 2000);
     chassis.turnToHeading(0, 2000);
-    chassis.moveToPoint(-32, 70, 2000,{.forwards = false, .maxSpeed = 50},false); // go to goal and score
+    chassis.moveToPoint(-30, 70, 2000,{.forwards = false, .maxSpeed = 50},false); // go to goal and score
     Unloader.set_value(true);
-    Outtake.move(600);
-    Intake.move(-600);
+    Outtake.move(127);
+    Intake.move(-127);
     pros::delay(1500);
-    Outtake.move(-600);
+    Outtake.move(-127);
     pros::delay(1000);
     left_motors.move(30); // forwards a bit
     right_motors.move(30);
@@ -42,8 +42,8 @@ void skills_auton() {
     pros::delay(2500); // unload
     chassis.moveToPoint(-30, 70, 2000,{.forwards = false, .maxSpeed = 75},false); // back to goal and score
     pros::delay(1700);
-    Outtake.move(600);
-    Intake.move(-600);
+    Outtake.move(127);
+    Intake.move(-127);
     pros::delay(1000);
     Unloader.set_value(false);
     pros::delay(1500);
@@ -56,34 +56,50 @@ void skills_auton() {
     chassis.moveToPoint(-32, 90, 1000);
     chassis.turnToHeading(270, 1000);
 
-    chassis.moveToPoint(130,90,5000,{.forwards=false,.maxSpeed=80},false);
+    chassis.moveToPoint(130,90,4500,{.forwards=false,.maxSpeed=80},false);
+
     chassis.setPose(130,90,270);
     
-    chassis.moveToPoint(110,90,2000,{});
+   
+    chassis.moveToPoint(112,85,2000,{});
     chassis.turnToHeading(0, 1000,{},false); // turn to unloader
-    pros::delay(300);
     Unloader.set_value(true);
-    Intake.move(-600);
-    chassis.moveToPoint(110,100,2000,{.maxSpeed = 100});
-    pros::delay(1000); // unload #3
-    chassis.moveToPoint(100, 100, 2000,{.forwards=false},false); // back up
+    Intake.move(-127);
+    pros::delay(500);
+    chassis.moveToPoint(112,100,2000,{.minSpeed=60});
+    pros::delay(2000);
+    chassis.moveToPoint(112, 90, 2000,{.forwards=false},false); // back up
     Unloader.set_value(false);
-    chassis.turnToHeading(270,1500,{},false); 
+    chassis.turnToHeading(270,1000);
+    chassis.moveToPoint(150,90,2000,{.forwards=false});
+    chassis.setPose(130,90,270);
+    chassis.turnToHeading(170, 1000);
+    chassis.moveToPoint(140, 5, 2000,{.maxSpeed=80});
+    chassis.turnToHeading(270,0);
+    chassis.moveToPoint(150, 5, 2000,{.forwards=false,.maxSpeed=60});
+    chassis.moveToPoint(115, 5, 1000,{.maxSpeed=60});
+    chassis.turnToHeading(180,1000);
+    chassis.moveToPoint(115,16,2000,{.forwards=false,.maxSpeed=60},false);
+    Outtake.move(127);
+
+
+
+
+    /*chassis.turnToHeading(270,1500,{},false); 
     chassis.moveToPoint(130, 100, 2000, {.forwards = false, .maxSpeed = 70}); // allign
     chassis.turnToHeading(180, 1500,{},false); 
     chassis.moveToPoint(130, 70, 2000, {.forwards = false, .maxSpeed = 80});
     chassis.turnToHeading(270, 1500);
-    chassis.moveToPoint(135, 70, 2000, {.forwards = false, .maxSpeed = 80});
+    chassis.moveToPoint(135, 70, 2000, {.forwards = false, .maxSpeed = 80});*/
 
 }
 
-/*
 void leftAuton() {
     Descore.set_value(true);
     chassis.setPose(0, 0, 270);
     
     chassis.moveToPoint(-32, 10, 2000);
-    Intake.move(-600);
+    Intake.move(-127);
     chassis.turnToPoint(-32, -10, 1500);
     pros::delay(1000);
     Descore.set_value(false);
@@ -91,20 +107,15 @@ void leftAuton() {
     chassis.moveToPoint(-32, -15, 3000);
     chassis.moveToPoint(-32, 30, 2000, {.forwards = false, .maxSpeed = 80}, false);
     
-    Outtake.move(600);
+    Outtake.move(127);
 }
-*/
-void leftAuton() {
-    chassis.setPose(0, 0, 90);
-    chassis.moveToPoint(0,24,2000);
-}
-/*
+
 void rightAuton() {
     Descore.set_value(true);
     chassis.setPose(0, 0, 90);
     
     chassis.moveToPoint(32, 10, 2000);
-    Intake.move(-600);
+    Intake.move(-127);
     chassis.turnToPoint(32, -10, 1500);
     pros::delay(1000);
     Unloader.set_value(true);
@@ -112,32 +123,24 @@ void rightAuton() {
     chassis.moveToPoint(32, -15, 3000, {.maxSpeed = 127}, false);
     chassis.moveToPoint(32, 30, 3000, {.forwards = false, .maxSpeed = 80}, false);
     
-    Outtake.move(600);
+    Outtake.move(127);
 
 
 }
-*/
 
-void rightAuton() {
-    Descore.set_value(true);
-    chassis.setPose(0, 0, 90);
-    
-    chassis.moveToPoint(20,0,2000);
-
-}
 void rightAutonDescore() {
     Descore.set_value(true);
     chassis.setPose(0, 0, 90);
     
     chassis.moveToPoint(32, 10, 2000);
-    Intake.move(-600);
+    Intake.move(-127);
     chassis.turnToPoint(32, -10, 1500);
     pros::delay(1000);
     Unloader.set_value(true);
     Descore.set_value(false);
     chassis.moveToPoint(32, -15, 3000, {.maxSpeed = 127}, false);
     chassis.moveToPoint(32, 30, 2000, {.forwards = false, .maxSpeed = 80}, false);
-    Outtake.move(600);
+    Outtake.move(127);
     pros::delay(2000);
     chassis.moveToPoint(32, 20, 2000);
     chassis.moveToPose(42, 27, 180, 3000, {.forwards = false, .maxSpeed = 80});
@@ -159,14 +162,14 @@ void leftAutonDescore() {
     chassis.setPose(0, 0, 90);
     
     chassis.moveToPoint(-32, 10, 2000);
-    Intake.move(-600);
+    Intake.move(-127);
     chassis.turnToPoint(-32, -10, 1500);
     pros::delay(1000);
     Unloader.set_value(true);
     Descore.set_value(false);
     chassis.moveToPoint(-32, -15, 3000, {.maxSpeed = 127}, false);
     chassis.moveToPoint(-32, 30, 2000, {.forwards = false, .maxSpeed = 80}, false);
-    Outtake.move(600);
+    Outtake.move(127);
     pros::delay(2000);
     chassis.swingToHeading(0,lemlib::DriveSide::RIGHT,1000);
     lemlib::Pose pose = chassis.getPose(false);
@@ -177,7 +180,7 @@ void leftAutonDescore() {
 void rightautowinpoint() {
     chassis.setPose(-46.766, -14.998, 90);
     chassis.swingToPoint(-19.254,-21.922,lemlib::DriveSide::LEFT,2000);
-    Intake.move(-600);
+    Intake.move(-127);
     chassis.moveToPoint(-19.254,-21.922,2000,{},false);
     chassis.turnToPoint(-12.758,-14.052,1500);
     chassis.moveToPoint(-12.758,-14.052,2000,{},false);
@@ -186,12 +189,12 @@ void rightautowinpoint() {
     chassis.moveToPoint(-41.118,-47.611,2000,{.forwards=false},false);
     chassis.turnToHeading(270,1500,{},false);
     Unloader.set_value(true);
-    Intake.move(-600);
-    Outtake.move(-600);
+    Intake.move(-127);
+    Outtake.move(-127);
     pros::delay(300);
     chassis.moveToPoint(-60.795,-47.611,1500,{.maxSpeed=100});
     chassis.moveToPoint(-28.911,-47.611,2000,{.forwards=false,.maxSpeed=80},false);
-    Outtake.move(600);
+    Outtake.move(127);
     Unloader.set_value(false);
 
 }
@@ -199,8 +202,8 @@ void rightautowinpoint() {
 void leftautowinpoint() {
     chassis.setPose(-46.766, 14.998, 90);
     chassis.swingToPoint(-19.254,21.922,lemlib::DriveSide::LEFT,2000);
-    Intake.move(-600);
-    Outtake.move(-600);
+    Intake.move(-127);
+    Outtake.move(-127);
     chassis.moveToPoint(-19.254,21.922,2000,{},false);
     chassis.turnToPoint(-12.758,14.052,1500,{.forwards=false},false);
     chassis.moveToPoint(-12.758,14.052,2000,{.forwards=false},false);
@@ -211,12 +214,12 @@ void leftautowinpoint() {
     chassis.moveToPoint(-41.118,47.611,2000,{},false);
     chassis.turnToHeading(270,1500,{},false);
     Unloader.set_value(true);
-    Intake.move(-600);
-    Outtake.move(-600);
+    Intake.move(-127);
+    Outtake.move(-127);
     pros::delay(300);
     chassis.moveToPoint(-60.795,47.611,1500,{.maxSpeed=100});
     chassis.moveToPoint(-28.911,47.611,2000,{.forwards=false,.maxSpeed=80},false);
-    Outtake.move(600);
+    Outtake.move(127);
     Unloader.set_value(false);
 
 }
@@ -228,6 +231,23 @@ void auton_coord_finder() {
         pros::lcd::set_text(0, ("X: " + std::to_string(pose.x)).c_str());
         pros::lcd::set_text(1, ("Y: " + std::to_string(pose.y)).c_str());
         pros::lcd::set_text(2, ("Theta: " + std::to_string(pose.theta)).c_str());
+        pros::delay(50);
+    }
+}
+
+void print_pose() {
+    char buf[20];
+    while (true) {
+        lemlib::Pose pose = chassis.getPose(false);
+
+        snprintf(buf, sizeof(buf), "X: %.2f", pose.x);
+        master.set_text(0, 0, buf);
+        pros::delay(50);
+        snprintf(buf, sizeof(buf), "Y: %.2f", pose.y);
+        master.set_text(1, 0, buf);
+        pros::delay(50);
+        snprintf(buf, sizeof(buf), "H: %.2f", pose.theta);
+        master.set_text(2, 0, buf);
         pros::delay(50);
     }
 }
