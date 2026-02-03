@@ -1,3 +1,4 @@
+#include <string>
 #include "lemlib/api.hpp" // IWYU pragma: keep
 #include "pros/rtos.hpp"
 #include "main.h"
