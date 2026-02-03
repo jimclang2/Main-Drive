@@ -77,6 +77,7 @@ void skills_auton() {
 
 }
 
+/*
 void leftAuton() {
     Descore.set_value(true);
     chassis.setPose(0, 0, 270);
@@ -92,7 +93,12 @@ void leftAuton() {
     
     Outtake.move(600);
 }
-
+*/
+void leftAuton() {
+    chassis.setPose(0, 0, 90);
+    chassis.moveToPoint(0,24,2000);
+}
+/*
 void rightAuton() {
     Descore.set_value(true);
     chassis.setPose(0, 0, 90);
@@ -110,7 +116,15 @@ void rightAuton() {
 
 
 }
+*/
 
+void rightAuton() {
+    Descore.set_value(true);
+    chassis.setPose(0, 0, 90);
+    
+    chassis.moveToPoint(20,0,2000);
+
+}
 void rightAutonDescore() {
     Descore.set_value(true);
     chassis.setPose(0, 0, 90);
