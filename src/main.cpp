@@ -9,9 +9,9 @@
 
 void initialize() {
     initializeRobot();
-    // Run selector for 15 seconds in normal mode (non-competition "Run")
-    // This blocks until timeout or competition switch activates
-    runAutonSelector(15000);
+    // Run selector in BACKGROUND - doesn't block, robot is immediately drivable!
+    // Selector will stay on screen for 15 seconds, continuously redrawing
+    runAutonSelectorBackground(15000);
 }
 
 void disabled() {}

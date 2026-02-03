@@ -84,6 +84,7 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 int autonSelection = 0; // 0=Skills, 1=Left, 2=Right, 3=RightDescore
 bool selectorLocked = false;
 uint32_t lockTimer = 0; // Timer for auto-lock feature
+volatile bool selectorTaskRunning = false; // Track if background selector is active
 
 const char* autonNames[] = {
     "SKILLS",
@@ -167,6 +168,7 @@ void handleScreenTouch() {
 void runAutonSelector(uint32_t timeout_ms) {
     // RESET lock state for new match/run
     selectorLocked = false;
+    selectorTaskRunning = true;  // Mark task as active
     
     uint32_t startTime = pros::millis();
     uint32_t lastRedraw = 0;  // Track when we last drew the selector
@@ -176,7 +178,7 @@ void runAutonSelector(uint32_t timeout_ms) {
     // Debug: Show status on controller
     master.print(0, 0, "Selector running");
     
-    while (true) {
+    while (selectorTaskRunning) {
         // Handle input
         handleScreenTouch();
         
@@ -211,7 +213,16 @@ void runAutonSelector(uint32_t timeout_ms) {
         pros::delay(20);
     }
     
+    selectorTaskRunning = false;  // Mark task as done
     master.print(0, 0, "Selector done   ");
+}
+
+// Background version - runs selector without blocking initialize()
+void runAutonSelectorBackground(uint32_t timeout_ms) {
+    // Spawn as a detached task
+    pros::Task selectorTask([timeout_ms]() {
+        runAutonSelector(timeout_ms);
+    });
 }
 
 void checkAndLockSelector(uint32_t lockDelay) {
