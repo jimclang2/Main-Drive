@@ -62,10 +62,6 @@ void opcontrol() {
     uint32_t lastBatteryCheck = 0;
     bool lowBatteryWarned = false;
 
-    Descore.set_value(true);
-    pros::delay(1000);
-    Descore.set_value(false);
-
     while (true) {
         // Check and lock selector after 5 seconds
         checkAndLockSelector(5000);

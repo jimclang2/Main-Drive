@@ -56,8 +56,8 @@ lemlib::ControllerSettings angular_controller(.863   , // kP
 );
 
 // Add these BEFORE the chassis declaration
-lemlib::ExpoDriveCurve throttle_curve(3, 10, 1.019);
-lemlib::ExpoDriveCurve steer_curve(3, 10, 1.019);
+lemlib::ExpoDriveCurve throttle_curve(3, 10, 1.05);
+lemlib::ExpoDriveCurve steer_curve(3, 10, 1.05);
 
 // create the chassis
 lemlib::Chassis chassis(drivetrain,
@@ -256,11 +256,4 @@ void initializeRobot() {
     Intake.set_reversed(true);
     MidScoring.set_value(false);
 
-    // Descore startup cycle in background
-    pros::Task descoreTask([]() {
-        pros::delay(500);
-        Descore.set_value(true);
-        pros::delay(1000);
-        Descore.set_value(false);
-    });
 }
