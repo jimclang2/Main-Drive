@@ -2,9 +2,9 @@
 #include "pros/rtos.hpp"
 #include "robot_config.h"
 #include "lemlib/api.hpp" // IWYU pragma: keep
+#include <ctime>
 
 void skills_auton() {
-
 chassis.setPose(0, 0, 270);
 chassis.moveToPoint(-31.75, 2,2000);
 chassis.turnToHeading(180, 1500,{},false);
@@ -39,7 +39,7 @@ Outtake.move(0);
 chassis.turnToHeading(0, 1000,{},false); // allign with unloader
 chassis.moveToPoint(-31, 110, 2000, {.maxSpeed = 70, .minSpeed = 60},false);
 pros::delay(2500); // unload
-chassis.moveToPoint(-31, 70, 2000,{.forwards = false, .maxSpeed = 75}, false); // back to goal and score
+chassis.moveToPoint(-32, 70, 2000,{.forwards = false, .maxSpeed = 75}, false); // back to goal and score
 Outtake.move(127);
 Unloader.set_value(false);
 pros::delay(1500);
@@ -50,7 +50,7 @@ Outtake.move(0);
 Intake.move(0);
 chassis.moveToPoint(-32, 90, 1000);
 chassis.turnToHeading(270, 1000);
-chassis.moveToPoint(130, 90, 4000, {.forwards = false, .maxSpeed = 70},false);
+chassis.moveToPoint(130, 90, 4000, {.forwards = false, .maxSpeed = 70},false); 
 chassis.setPose(130, 90, 270);
 
 
@@ -59,28 +59,40 @@ chassis.turnToHeading(0, 1000,{},false); // turn to unloader
 Unloader.set_value(true);
 Intake.move(-127);
 pros::delay(500);
-chassis.moveToPoint(112,110,2000,{.maxSpeed=100},false); //unload
+chassis.moveToPoint(111,110,2000,{.maxSpeed=100},false); //unload
 pros::delay(2000);
-chassis.moveToPoint(112, 85, 2000,{.forwards=false},false); // back up
+chassis.moveToPoint(111, 85, 2000,{.forwards=false},false); // back up
 Unloader.set_value(false);
 pros::delay(400);
 chassis.turnToHeading(270,1000);
-chassis.moveToPoint(150,90,2000,{.forwards=false,.maxSpeed=80}); // allign
+chassis.moveToPoint(150,90,2000,{.forwards=false,.maxSpeed=80}, false); // allign
 chassis.setPose(130,90,270);
-chassis.turnToHeading(170, 1000);
-chassis.moveToPoint(142, 0, 2000,{.maxSpeed=80});
+chassis.swingToHeading(0, lemlib::DriveSide::RIGHT, 1000); // turn
+chassis.moveToPoint(142, 0, 2000,{.forwards = false, .maxSpeed=80});
 chassis.turnToHeading(270,0);
-chassis.moveToPoint(170, 0, 2000,{.forwards=false,.maxSpeed=60});
-chassis.moveToPoint(127, 0, 1000,{.maxSpeed=60});
+chassis.moveToPoint(170, 0, 2000,{.forwards=false,.maxSpeed=60}); // allign
+chassis.moveToPoint(124, 0, 1000,{.maxSpeed=60});
 chassis.turnToHeading(180,1000);
-chassis.moveToPoint(127,16,2000,{.forwards=false,.maxSpeed=60},false);
-Outtake.move(127);
-pros::delay(1250);
+chassis.moveToPoint(124,30,2000,{.forwards=false,.maxSpeed=60},false); // score
 Unloader.set_value(true);
-Outtake.move(0);
-chassis.moveToPoint(127, -15, 2000, {.maxSpeed = 50});
-chassis.moveToPoint(127, 16, 2000);
 Outtake.move(127);
+Intake.move(-127);
+pros::delay(2500);
+left_motors.move(30); // forwards a bit
+right_motors.move(30);
+Outtake.move(0);
+chassis.moveToPoint(124, -60, 2500, {.maxSpeed = 50},false); //unload
+chassis.moveToPoint(124, 40, 2000,{.forwards = false, .maxSpeed = 80}, false); // score
+pros::delay(300);
+Outtake.move(127);
+Unloader.set_value(false);
+chassis.setPose(0,0,0);
+pros::delay(1500);
+left_motors.move(30); // forwards a bit
+right_motors.move(30);
+chassis.moveToPose(17, 26, 70, 2000);
+chassis.moveToPose(46.16, 33.53, 89.42, 2000, {.minSpeed=100}); // park
+
 }
 
 void leftAuton() {
@@ -224,19 +236,94 @@ void auton_coord_finder() {
     }
 }
 
-void print_pose() {
-    char buf[20];
-    while (true) {
-        lemlib::Pose pose = chassis.getPose(false);
+void skills_autona() {
+chassis.setPose(0, 0, 270);
+chassis.moveToPoint(-31.75, 2,2000,{.minSpeed=100});
+chassis.turnToHeading(180, 1500,{.minSpeed=100},false);
+Unloader.set_value(true);
+pros::delay(300);
+Intake.move(-127);
+chassis.moveToPoint(-31.75, -15, 2300, {.maxSpeed = 100} );
+pros::delay(2000);
+chassis.moveToPoint( -32, 5, 2000, {.forwards = false, .minSpeed=100},false);
+Unloader.set_value(false);
+Intake.move(0);
+chassis.turnToHeading(90, 1000,{.minSpeed=100});
+chassis.moveToPoint( -55, 5, 1500, {.forwards = false, .minSpeed = 100}); // allign
+chassis.turnToHeading(0, 1000,{.minSpeed=100});
+chassis.moveToPoint(-47, 90, 2000,{.minSpeed=100});
 
-        snprintf(buf, sizeof(buf), "X: %.2f", pose.x);
-        master.set_text(0, 0, buf);
-        pros::delay(50);
-        snprintf(buf, sizeof(buf), "Y: %.2f", pose.y);
-        master.set_text(1, 0, buf);
-        pros::delay(50);
-        snprintf(buf, sizeof(buf), "H: %.2f", pose.theta);
-        master.set_text(2, 0, buf);
-        pros::delay(50);
-    }
+chassis.turnToHeading(90, 1000,{.minSpeed=100});
+chassis.moveToPoint(-60, 90, 1500, {.forwards = false, .minSpeed = 100}); // allign
+chassis.moveToPoint(-33, 90, 2000,{.minSpeed=100});
+chassis.turnToHeading(0, 1000,{.minSpeed=100});
+chassis.moveToPoint(-33, 70, 2000,{.forwards = false, .maxSpeed = 50},false); // go to goal and score
+Unloader.set_value(true);
+Outtake.move(127);
+Intake.move(-127);
+pros::delay(2500);
+left_motors.move(30); // forwards a bit
+right_motors.move(30);
+pros::delay(300);
+left_motors.move(0);
+right_motors.move(0);
+Outtake.move(0);
+chassis.turnToHeading(0, 1000,{.minSpeed=100},false); // allign with unloader
+chassis.moveToPoint(-31, 110, 2000, {.maxSpeed = 70, .minSpeed = 60},false);
+pros::delay(2500); // unload
+chassis.moveToPoint(-32, 70, 2000,{.forwards = false, .maxSpeed = 75}, false); // back to goal and score
+Outtake.move(127);
+Unloader.set_value(false);
+pros::delay(1500);
+pros::delay(500);
+Intake.move(-127);
+pros::delay(1750);
+Outtake.move(0);
+Intake.move(0);
+chassis.moveToPoint(-32, 90, 1000,{.minSpeed=100});
+chassis.turnToHeading(270, 1000,{.minSpeed=100});
+chassis.moveToPoint(110, 90, 4000,{.forwards=false,.minSpeed=100,.earlyExitRange=8},true);
+chassis.moveToPoint(130, 90, 2000, {.forwards = false, .maxSpeed = 70},false); 
+chassis.setPose(130, 90, 270);
+
+
+chassis.moveToPoint(112,80,2000,{.minSpeed=100});
+chassis.turnToHeading(0, 1000,{.minSpeed=100},false); // turn to unloader
+Unloader.set_value(true);
+Intake.move(-127);
+pros::delay(500);
+chassis.moveToPoint(111,110,2000,{.maxSpeed=100},false); //unload
+pros::delay(2000);
+chassis.moveToPoint(111, 85, 2000,{.forwards=false,.minSpeed=100},false); // back up
+Unloader.set_value(false);
+pros::delay(400);
+chassis.turnToHeading(270,1000,{.minSpeed=100});
+chassis.moveToPoint(150,90,2000,{.forwards=false,.maxSpeed=80}, false); // allign
+chassis.setPose(130,90,270);
+chassis.swingToHeading(0, lemlib::DriveSide::RIGHT, 1000); // turn
+chassis.moveToPoint(142, 0, 2000,{.forwards = false, .maxSpeed=80});
+chassis.turnToHeading(270,0);
+chassis.moveToPoint(170, 0, 2000,{.forwards=false,.maxSpeed=60}); // allign
+chassis.moveToPoint(124, 0, 1000,{.minSpeed=100});
+chassis.turnToHeading(180,1000,{.minSpeed=100});
+chassis.moveToPoint(124,30,2000,{.forwards=false,.maxSpeed=60},false); // score
+Unloader.set_value(true);
+Outtake.move(127);
+Intake.move(-127);
+pros::delay(2500);
+left_motors.move(30); // forwards a bit
+right_motors.move(30);
+Outtake.move(0);
+chassis.moveToPoint(124, -60, 2500, {.maxSpeed = 50},false); //unload
+chassis.moveToPoint(124, 40, 2000,{.forwards = false, .maxSpeed = 80}, false); // score
+pros::delay(300);
+Outtake.move(127);
+Unloader.set_value(false);
+chassis.setPose(0,0,0);
+pros::delay(1500);
+left_motors.move(30); // forwards a bit
+right_motors.move(30);
+chassis.moveToPose(17, 26, 70, 2000);
+chassis.moveToPose(46.16, 33.53, 89.42, 2000, {.minSpeed=100}); // park
+
 }

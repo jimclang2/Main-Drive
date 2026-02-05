@@ -5,7 +5,7 @@ private:
     bool descoreState;
     bool unloaderState;
     bool A_lastState;
-    bool B_lastState;
+    bool L2_lastState;
 
 public:
     PneumaticControl();

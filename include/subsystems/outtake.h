@@ -4,9 +4,7 @@
 class OuttakeControl {
 private:
     bool toggleForward;
-    bool comboMode;      // L2 combo mode: runs both intake and outtake
     bool L1_lastState;
-    bool L2_lastState;
     bool midScoringMode;
     bool X_lastState;
     
@@ -18,5 +16,4 @@ public:
     void update();
     int getVelocity();
     bool isMidScoring();
-    bool isComboModeActive();
 };

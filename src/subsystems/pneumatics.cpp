@@ -3,7 +3,7 @@
 
 PneumaticControl::PneumaticControl()
     : descoreState(false), unloaderState(false),
-      A_lastState(false), B_lastState(false) {}
+      A_lastState(false), L2_lastState(false) {}
 
 void PneumaticControl::update() {
     // Descore (Button A)
@@ -14,13 +14,13 @@ void PneumaticControl::update() {
     }
     A_lastState = A_current;
 
-    // Unloader (Button B)
-    bool B_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_B);
-    if (B_current && !B_lastState) {
+    // Unloader (Button L2)
+    bool L2_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
+    if (L2_current && !L2_lastState) {
         unloaderState = !unloaderState;
         Unloader.set_value(unloaderState);
     }
-    B_lastState = B_current;
+    L2_lastState = L2_current;
 }
 
 bool PneumaticControl::getDescoreState() {
