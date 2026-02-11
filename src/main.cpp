@@ -40,6 +40,12 @@ void opcontrol() {
 
     while (true) {
 
+        // Display intake current draw on brain screen
+        pros::screen::set_pen(pros::c::COLOR_WHITE);
+        pros::screen::fill_rect(0, 0, 480, 40);
+        pros::screen::set_pen(pros::c::COLOR_BLACK);
+        pros::screen::print(pros::E_TEXT_LARGE, 10, 10, "Intake mA: %d", Intake.get_current_draw());
+
         // Tank Drive with deadband
         int left = applyDeadband(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
         int right = applyDeadband(master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y));
