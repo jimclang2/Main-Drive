@@ -50,7 +50,7 @@ void OuttakeControl::update() {
     if (midScoringMode && !isUnjamming) {
         // Mid-scoring mode AFTER unjam: run intake forward and outtake reverse
         Intake.move_velocity(-600);  // This will run continuously during mid-scoring
-        velocity = -600;
+        velocity = -450;
         // Update last states to prevent "stored" button presses
         L1_lastState = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
     } else if (!midScoringMode) {
@@ -75,7 +75,7 @@ void OuttakeControl::update() {
 }
 
 int OuttakeControl::getVelocity() {
-    if (midScoringMode) return -600;
+    if (midScoringMode) return -450;
     if (toggleForward) return 600;
     return 0;
 }

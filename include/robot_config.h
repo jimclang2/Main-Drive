@@ -28,17 +28,3 @@ extern pros::Controller master;
 
 // Initialization function
 void initializeRobot();
-
-// --------------------- Autonomous Selector ---------------------
-extern int autonSelection;
-extern const char* autonNames[];
-extern bool selectorLocked;
-extern uint32_t lockTimer;
-extern volatile bool selectorTaskRunning;
-
-void drawAutonSelector();
-void drawLockScreen();
-void handleScreenTouch();
-void runAutonSelector(uint32_t timeout_ms);
-void runAutonSelectorBackground(uint32_t timeout_ms);  // Non-blocking version
-void checkAndLockSelector(uint32_t lockDelay);

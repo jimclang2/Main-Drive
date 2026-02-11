@@ -10,38 +10,17 @@
 
 void initialize() {
     initializeRobot();
-    // Run selector in BACKGROUND - doesn't block, robot is immediately drivable!
-    // Selector will stay on screen for 15 seconds, continuously redrawing
-    runAutonSelectorBackground(15000);
 }
 
 void disabled() {}
 
-void competition_initialize() {
-    // If connected to field: wait for enable (timeout = 0)
-    // If not connected (testing): 15 second timeout
-    if (pros::competition::is_connected()) {
-        runAutonSelector(0); // Competition mode - waits for field enable
-    } else {
-        runAutonSelector(15000); // Practice mode - 15 seconds
-    }
-}
+void competition_initialize() {}
 
 void autonomous() {
-    switch(autonSelection) {
-        case 0:
-            skills_auton();
-            break;
-        case 1:
-            leftAuton();
-            break;
-        case 2:
-            rightAuton();
-            break;
-        case 3:
-            rightAutonDescore();
-            break;
-    }
+    skills_auton();
+    // leftAuton();
+    // rightAuton();
+    // rightAutonDescore();
 }
 
 // Small deadband to prevent drift (applies to values close to 0)
@@ -54,17 +33,12 @@ void opcontrol() {
     OuttakeControl outtake;
     PneumaticControl pneumatics;
     
-    // Reset lock timer when driver control starts
-    lockTimer = pros::millis();
-    
     // Tracking for warnings (don't spam alerts)
     uint32_t lastTempCheck = 0;
     uint32_t lastBatteryCheck = 0;
     bool lowBatteryWarned = false;
 
     while (true) {
-        // Check and lock selector after 5 seconds
-        checkAndLockSelector(5000);
 
         // Tank Drive with deadband
         int left = applyDeadband(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));

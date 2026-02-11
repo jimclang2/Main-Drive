@@ -1,5 +1,5 @@
 #include "robot_config.h"
-#include "pros/rtos.hpp"  // For pros::Task
+
 
 // Vertical Tracking Wheel
 pros::Rotation rotation_sensor(-11);
@@ -15,7 +15,7 @@ lemlib::Drivetrain drivetrain(&left_motors, // left motor group
                               11.5, // 11.5 inch track width
                               lemlib::Omniwheel::NEW_325, // using new 3.25" omnis
                               450, // drivetrain rpm is 450rpm (im pretty sure)
-                              2 // horizontal drift is 2 (for now)
+                              5 // horizontal drift (omni + traction wheel mix)
 );
 
 // tracking wheel configuration
@@ -81,166 +81,7 @@ pros::adi::DigitalOut MidScoring('B');
 // --------------------- Controller ---------------------
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-// --------------------- Autonomous Selector Logic ---------------------
-int autonSelection = 0; // 0=Skills, 1=Left, 2=Right, 3=RightDescore
-bool selectorLocked = false;
-uint32_t lockTimer = 0; // Timer for auto-lock feature
-volatile bool selectorTaskRunning = false; // Track if background selector is active
 
-const char* autonNames[] = {
-    "SKILLS",
-    "LEFT",
-    "RIGHT",
-    "R-DESCORE"
-};
-
-void drawAutonSelector() {
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::fill_rect(0, 0, 480, 240); // Clear screen
-    
-    // Draw 4 buttons (2x2 grid)
-    for (int i = 0; i < 4; i++) {
-        int x = (i % 2) * 240;  // 0 or 240
-        int y = (i / 2) * 120;  // 0 or 120
-        
-        // Highlight selected button
-        if (i == autonSelection) {
-            pros::screen::set_pen(pros::c::COLOR_GREEN);
-        } else {
-            pros::screen::set_pen(pros::c::COLOR_BLUE);
-        }
-        
-        pros::screen::fill_rect(x + 5, y + 5, x + 235, y + 115);
-        
-        // Draw text
-        pros::screen::set_pen(pros::c::COLOR_WHITE);
-        pros::screen::print(pros::E_TEXT_LARGE, x + 60, y + 50, "%s", autonNames[i]);
-    }
-}
-
-void drawLockScreen() {
-    // Cool lock screen design
-    pros::screen::set_pen(pros::c::COLOR_BLACK);
-    pros::screen::fill_rect(0, 0, 480, 240);
-    
-    // Red border
-    pros::screen::set_pen(pros::c::COLOR_RED);
-    pros::screen::draw_rect(10, 10, 470, 230);
-    pros::screen::draw_rect(12, 12, 468, 228);
-    pros::screen::draw_rect(14, 14, 466, 226);
-    
-    // Lock icon
-    pros::screen::set_pen(pros::c::COLOR_YELLOW);
-    pros::screen::fill_circle(240, 80, 30);
-    pros::screen::set_pen(pros::c::COLOR_BLACK);
-    pros::screen::fill_circle(240, 80, 20);
-    pros::screen::set_pen(pros::c::COLOR_YELLOW);
-    pros::screen::fill_rect(220, 80, 260, 120);
-    pros::screen::set_pen(pros::c::COLOR_BLACK);
-    pros::screen::fill_circle(240, 100, 8);
-    
-    // Text
-    pros::screen::set_pen(pros::c::COLOR_WHITE);
-    pros::screen::print(pros::E_TEXT_LARGE, 160, 140, "LOCKED");
-    pros::screen::set_pen(pros::c::COLOR_YELLOW);
-    pros::screen::print(pros::E_TEXT_MEDIUM, 140, 180, "Auton: %s", autonNames[autonSelection]);
-}
-
-void handleScreenTouch() {
-    if (selectorLocked) return;
-    
-    pros::screen_touch_status_s_t status = pros::screen::touch_status();
-    
-    if (status.touch_status == pros::E_TOUCH_PRESSED) {
-        int x = status.x;
-        int y = status.y;
-        
-        // Determine which quadrant was pressed
-        if (x < 240 && y < 120) autonSelection = 0; // Top-left: Skills
-        else if (x >= 240 && y < 120) autonSelection = 1; // Top-right: Left
-        else if (x < 240 && y >= 120) autonSelection = 2; // Bottom-left: Right
-        else autonSelection = 3; // Bottom-right: RightDescore
-        
-        drawAutonSelector();
-        pros::delay(200); // Debounce
-    }
-}
-
-void runAutonSelector(uint32_t timeout_ms) {
-    // RESET lock state for new match/run
-    selectorLocked = false;
-    selectorTaskRunning = true;  // Mark task as active
-    
-    uint32_t startTime = pros::millis();
-    uint32_t lastRedraw = 0;  // Track when we last drew the selector
-    
-    drawAutonSelector();
-    
-    // Debug: Show status on controller
-    master.print(0, 0, "Selector running");
-    
-    while (selectorTaskRunning) {
-        // Handle input
-        handleScreenTouch();
-        
-        // CONTINUOUSLY REDRAW every 100ms to combat IMU calibration overwriting screen
-        if (pros::millis() - lastRedraw > 100) {
-            drawAutonSelector();
-            lastRedraw = pros::millis();
-            
-            // Show remaining time on screen
-            uint32_t elapsed = pros::millis() - startTime;
-            if (timeout_ms > 0) {
-                uint32_t remaining = (elapsed < timeout_ms) ? (timeout_ms - elapsed) / 1000 : 0;
-                pros::screen::set_pen(pros::c::COLOR_BLACK);
-                pros::screen::print(pros::E_TEXT_SMALL, 200, 220, "Time: %d", remaining);
-            }
-        }
-        
-        uint32_t elapsed = pros::millis() - startTime;
-        
-        // Exit condition 1: Timeout reached (if not infinite/0)
-        if (timeout_ms > 0 && elapsed > timeout_ms) {
-            break;
-        }
-        
-        // Exit condition 2: ONLY exit for competition if BOTH connected AND enabled
-        if (pros::competition::is_connected() && 
-            !pros::competition::is_disabled() && 
-            !pros::competition::is_autonomous()) {
-            break;
-        }
-
-        pros::delay(20);
-    }
-    
-    selectorTaskRunning = false;  // Mark task as done
-    master.print(0, 0, "Selector done   ");
-}
-
-// Background version - runs selector without blocking initialize()
-void runAutonSelectorBackground(uint32_t timeout_ms) {
-    // Spawn as a detached task
-    pros::Task selectorTask([timeout_ms]() {
-        runAutonSelector(timeout_ms);
-    });
-}
-
-void checkAndLockSelector(uint32_t lockDelay) {
-    static bool lockScreenDrawn = false;
-    
-    // Auto-lock after delay
-    if (!selectorLocked && pros::millis() - lockTimer > lockDelay) {
-        selectorLocked = true;
-        lockScreenDrawn = false;
-    }
-    
-    // Draw lock screen once
-    if (selectorLocked && !lockScreenDrawn) {
-        drawLockScreen();
-        lockScreenDrawn = true;
-    }
-}
 
 void initializeRobot() {
     // Non-blocking calibration - fixes "Run" mode hang
