@@ -8,7 +8,7 @@ PneumaticControl::PneumaticControl()
 void PneumaticControl::update() {
     // Descore (Button A) - hold to retract, release to extend
     bool A_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_A);
-    Descore.set_value(A_current);
+    Descore.set_value(!A_current);
     descoreState = A_current;
 
     // Unloader (Button L2)
