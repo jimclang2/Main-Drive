@@ -6,13 +6,10 @@ PneumaticControl::PneumaticControl()
       A_lastState(false), L2_lastState(false) {}
 
 void PneumaticControl::update() {
-    // Descore (Button A)
+    // Descore (Button A) - hold to retract, release to extend
     bool A_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_A);
-    if (A_current && !A_lastState) {
-        descoreState = !descoreState;
-        Descore.set_value(descoreState);
-    }
-    A_lastState = A_current;
+    Descore.set_value(A_current);
+    descoreState = A_current;
 
     // Unloader (Button L2)
     bool L2_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
