@@ -4,7 +4,7 @@ class PneumaticControl {
 private:
     bool descoreState;
     bool unloaderState;
-    bool A_lastState;
+    bool R2_lastState;
     bool L2_lastState;
 
 public:

@@ -5,7 +5,7 @@ private:
     bool toggleForward;
     bool toggleReverse;
     bool R1_lastState;
-    bool R2_lastState;
+    bool A_lastState;
 
 public:
     IntakeControl();

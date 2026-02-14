@@ -3,13 +3,13 @@
 
 PneumaticControl::PneumaticControl()
     : descoreState(false), unloaderState(false),
-      A_lastState(false), L2_lastState(false) {}
+      R2_lastState(false), L2_lastState(false) {}
 
 void PneumaticControl::update() {
-    // Descore (Button A) - hold to retract, release to extend
-    bool A_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_A);
-    Descore.set_value(!A_current);
-    descoreState = A_current;
+    // Descore (Button R2) - hold to retract, release to extend
+    bool R2_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_R2);
+    Descore.set_value(!R2_current);
+    descoreState = R2_current;
 
     // Unloader (Button L2)
     bool L2_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);

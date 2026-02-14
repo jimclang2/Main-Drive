@@ -18,9 +18,9 @@ void competition_initialize() {}
 
 void autonomous() {
     skills_auton();
-    // leftAuton();
-    // rightAuton();
-    // rightAutonDescore();
+     //leftAuton();
+    //rightAuton();
+     //leftAuton_descore();
 }
 
 // Small deadband to prevent drift (applies to values close to 0)
@@ -32,6 +32,9 @@ void opcontrol() {
     IntakeControl intake;
     OuttakeControl outtake;
     PneumaticControl pneumatics;
+
+    // Initialize descore piston to extended position
+    Descore.set_value(true);
     
     // Tracking for warnings (don't spam alerts)
     uint32_t lastTempCheck = 0;
