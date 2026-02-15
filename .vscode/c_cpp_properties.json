@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "name": "PROS Project",
+      "name": "windows-clang-arm64",
       "includePath": [
         "${workspaceFolder}/**",
         "${workspaceFolder}/include",
@@ -20,13 +20,13 @@
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "c:\\Users\\admin\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "c:/Users/IJiae/AppData/Roaming/Antigravity/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
-      "intelliSenseMode": "gcc-arm",
+      "intelliSenseMode": "windows-clang-arm64",
       "browse": {
         "path": [
-          "c:\\Users\\admin\\Documents\\Main-Drive"
+          "c:\\Users\\IJiae\\Downloads\\Main-Drive"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
