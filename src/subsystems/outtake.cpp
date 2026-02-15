@@ -1,13 +1,14 @@
 #include "subsystems/outtake.h"
+#include "subsystems/intake.h"
 #include "robot_config.h"
 
 OuttakeControl::OuttakeControl()
-    : toggleForward(false),
+    : comboMode(false),
       L1_lastState(false),
       midScoringMode(false), X_lastState(false),
       unjamStartTime(0), isUnjamming(false) {}
 
-void OuttakeControl::update() {
+void OuttakeControl::update(IntakeControl& intake) {
     // Handle unjam sequence
     if (isUnjamming) {
         if (pros::millis() - unjamStartTime >= 100) {  // Time of delay
@@ -27,7 +28,7 @@ void OuttakeControl::update() {
         
         if (midScoringMode) {
             // ENTERING mid-scoring mode - turn off combo mode
-            toggleForward = false;
+            comboMode = false;
             MidScoring.set_value(true); // Retract piston
             isUnjamming = true;
             unjamStartTime = pros::millis();
@@ -38,7 +39,7 @@ void OuttakeControl::update() {
             Intake.move_velocity(0); // Stop intake
             Outtake.move_velocity(0); // Stop outtake
             // Reset toggles so they start fresh
-            toggleForward = false;
+            comboMode = false;
             X_lastState = X_current; // Update state BEFORE returning
             return; // Exit function immediately after turning off mid-scoring
         }
@@ -54,21 +55,30 @@ void OuttakeControl::update() {
         // Update last states to prevent "stored" button presses
         L1_lastState = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
     } else if (!midScoringMode) {
-        // Normal mode: L1 = outtake forward
+        // Normal mode: L1 = combo toggle (outtake reverse + intake forward)
         bool L1_current = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
 
-        // L1: Toggle outtake forward only
+        // L1: Toggle combo mode
         if (L1_current && !L1_lastState) {
-            toggleForward = !toggleForward;
+            comboMode = !comboMode;
+            if (comboMode) {
+                // Activating combo - cancel any intake-only toggles
+                intake.cancelToggles();
+            } else {
+                // Deactivating combo - stop both motors
+                Intake.move_velocity(0);
+                // velocity stays 0, will be applied below
+            }
         }
         
         L1_lastState = L1_current;
 
         // Set motor velocities based on current mode
-        if (toggleForward) {
-            velocity = 600;
+        if (comboMode) {
+            velocity = -600;             // Outtake reverse
+            Intake.move_velocity(600);   // Intake forward
         }
-        // If neither is active, velocity stays 0
+        // If combo not active, velocity stays 0 (intake handled by IntakeControl)
     }
 
     Outtake.move_velocity(velocity);
@@ -76,7 +86,7 @@ void OuttakeControl::update() {
 
 int OuttakeControl::getVelocity() {
     if (midScoringMode) return -600;
-    if (toggleForward) return 600;
+    if (comboMode) return -600;
     return 0;
 }
 
@@ -84,3 +94,11 @@ bool OuttakeControl::isMidScoring() {
     return midScoringMode;
 }
 
+bool OuttakeControl::isComboMode() {
+    return comboMode;
+}
+
+void OuttakeControl::cancelCombo() {
+    comboMode = false;
+    Outtake.move_velocity(0); // Stop outtake immediately when combo is cancelled
+}

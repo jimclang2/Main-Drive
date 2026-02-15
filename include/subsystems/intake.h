@@ -1,5 +1,7 @@
 #pragma once
 
+class OuttakeControl; // Forward declaration
+
 class IntakeControl {
 private:
     bool toggleForward;
@@ -9,6 +11,7 @@ private:
 
 public:
     IntakeControl();
-    void update(bool isBlocked = false);
+    void update(OuttakeControl& outtake);
     int getVelocity();
+    void cancelToggles();
 };

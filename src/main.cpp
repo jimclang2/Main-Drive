@@ -18,9 +18,9 @@ void competition_initialize() {}
 
 void autonomous() {
     skills_auton();
-     //leftAuton();
+    //leftAuton();
     //rightAuton();
-     //leftAuton_descore();
+    //leftAuton_descore();
 }
 
 // Small deadband to prevent drift (applies to values close to 0)
@@ -56,8 +56,8 @@ void opcontrol() {
         right_motors.move(right);
 
         // Update subsystems
-        outtake.update();
-        intake.update(outtake.isMidScoring());
+        outtake.update(intake);
+        intake.update(outtake);
         pneumatics.update();
         
         // === MOTOR TEMPERATURE MONITORING (every 2 seconds) ===
