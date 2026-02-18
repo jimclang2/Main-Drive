@@ -1,24 +1,9 @@
-bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
- include/lemlib/pid.hpp include/lemlib/pose.hpp include/lemlib/util.hpp \
- include/lemlib/chassis/chassis.hpp include/pros/rtos.hpp \
- include/pros/rtos.h include/pros/imu.hpp include/pros/device.hpp \
- include/pros/misc.hpp include/pros/misc.h include/pros/imu.h \
- include/lemlib/asset.hpp include/lemlib/chassis/trackingWheel.hpp \
- include/pros/motors.hpp include/pros/abstract_motor.hpp \
- include/pros/motors.h include/pros/rtos.hpp include/pros/motor_group.hpp \
- include/pros/colors.hpp include/pros/adi.hpp include/pros/adi.h \
- include/pros/rotation.hpp include/pros/rotation.h \
- include/lemlib/exitcondition.hpp include/lemlib/driveCurve.hpp \
- include/lemlib/logger/logger.hpp include/fmt/core.h include/fmt/format.h \
- include/fmt/core.h include/fmt/format-inl.h \
- include/lemlib/logger/baseSink.hpp include/fmt/args.h \
- include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
- include/lemlib/logger/telemetrySink.hpp include/main.h include/api.h \
+bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/adi.h include/pros/ai_vision.h include/pros/colors.h \
  include/pros/device.h include/pros/distance.h include/pros/error.h \
- include/pros/ext_adi.h include/pros/adi.h include/pros/gps.h \
- include/pros/imu.h include/pros/link.h include/pros/llemu.h \
- include/liblvgl/llemu.h include/liblvgl/lvgl.h \
+ include/pros/ext_adi.h include/pros/adi.h include/pros/adi.h \
+ include/pros/gps.h include/pros/imu.h include/pros/link.h \
+ include/pros/llemu.h include/liblvgl/llemu.h include/liblvgl/lvgl.h \
  include/liblvgl/lv_version.h include/liblvgl/lvgl_private.h \
  include/liblvgl/core/lv_global.h \
  include/liblvgl/core/../lv_conf_internal.h \
@@ -35,36 +20,36 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/core/../draw/../misc/../font/../misc/lv_types.h \
  include/liblvgl/core/../draw/../misc/../font/lv_symbol_def.h \
  include/liblvgl/core/../draw/../misc/../font/../draw/lv_draw_buf.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_math.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_assert.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_log.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/stdlib/lv_mem.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/stdlib/lv_string.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_palette.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color_op.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/stdlib/lv_string.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_types.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_area.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_types.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_math.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_color.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_assert.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_log.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/stdlib/lv_mem.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/stdlib/lv_string.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_types.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_palette.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_color.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_color_op.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../stdlib/lv_string.h \
  include/liblvgl/core/../draw/../misc/../font/../draw/lv_image_dsc.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ include/liblvgl/core/../draw/../misc/../font/../draw/../lv_conf_internal.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/lv_area.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache_entry.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/osal/lv_os.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/osal/lv_os_none.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/osal/lv_os.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_types.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/osal/lv_os_none.h \
+ include/liblvgl/core/../draw/../misc/../font/../misc/cache/../lv_types.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache_private.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache_lru_rb.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_image_cache.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h \
  include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_image_header_cache.h \
  include/liblvgl/core/../draw/../misc/lv_color.h \
  include/liblvgl/core/../draw/../misc/lv_area.h \
@@ -83,14 +68,14 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/core/../draw/../misc/lv_assert.h \
  include/liblvgl/core/../draw/../misc/lv_bidi.h \
  include/liblvgl/core/../draw/../misc/../layouts/lv_layout.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
+ include/liblvgl/core/../draw/../misc/../layouts/../lv_conf_internal.h \
+ include/liblvgl/core/../draw/../misc/../layouts/../misc/lv_types.h \
  include/liblvgl/core/../draw/../misc/../layouts/flex/lv_flex.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h \
+ include/liblvgl/core/../draw/../misc/../layouts/flex/../../lv_conf_internal.h \
+ include/liblvgl/core/../draw/../misc/../layouts/flex/../../misc/lv_area.h \
  include/liblvgl/core/../draw/../misc/../layouts/grid/lv_grid.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h \
+ include/liblvgl/core/../draw/../misc/../layouts/grid/../../lv_conf_internal.h \
+ include/liblvgl/core/../draw/../misc/../layouts/grid/../../misc/lv_area.h \
  include/liblvgl/core/../draw/../misc/lv_style_gen.h \
  include/liblvgl/core/../draw/../misc/lv_text.h \
  include/liblvgl/core/../draw/../misc/lv_profiler.h \
@@ -110,7 +95,7 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/core/../draw/sw/../../display/../misc/lv_timer.h \
  include/liblvgl/core/../draw/sw/../../display/../misc/lv_event.h \
  include/liblvgl/core/../draw/sw/../../display/../misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ include/liblvgl/core/../draw/sw/../../display/../misc/../lv_conf_internal.h \
  include/liblvgl/core/../draw/sw/../../display/../misc/lv_array.h \
  include/liblvgl/core/../draw/sw/../../display/../misc/lv_color.h \
  include/liblvgl/core/../draw/sw/../../display/../draw/lv_draw.h \
@@ -157,39 +142,39 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/core/../others/sysmon/lv_sysmon.h \
  include/liblvgl/core/../others/sysmon/../../misc/lv_timer.h \
  include/liblvgl/core/../others/sysmon/../../others/observer/lv_observer.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_style.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_assert.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_tree.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_anim.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/display/lv_display.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_pos.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_scroll.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_style.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_bidi.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_style_gen.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_style.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_draw.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_rect.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_label.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_image.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_line.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_arc.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_class.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_property.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_event.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_event.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/indev/lv_indev.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_group.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_ll.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_timer.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_event.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_group.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_types.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_style.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_area.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_color.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_assert.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_tree.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_anim.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/display/lv_display.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_pos.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_scroll.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_style.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_bidi.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_style_gen.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_style.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_draw.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_rect.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_label.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_image.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_line.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_arc.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_class.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_property.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_event.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_event.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/indev/lv_indev.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_group.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_ll.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_area.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_timer.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_event.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_group.h \
  include/liblvgl/core/../stdlib/builtin/lv_tlsf.h \
  include/liblvgl/core/../stdlib/builtin/../../lv_conf_internal.h \
  include/liblvgl/core/../stdlib/builtin/../../osal/lv_os.h \
@@ -260,16 +245,16 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/libs/qrcode/lv_qrcode_private.h \
  include/liblvgl/libs/qrcode/../../widgets/canvas/lv_canvas_private.h \
  include/liblvgl/libs/qrcode/../../widgets/canvas/../image/lv_image_private.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_private.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_private.h \
  include/liblvgl/libs/qrcode/../../widgets/canvas/../image/lv_image.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_fs.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_fs.h \
+ C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw.h \
  include/liblvgl/libs/qrcode/../../widgets/canvas/lv_canvas.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
+ include/liblvgl/libs/qrcode/../../widgets/canvas/../../lv_conf_internal.h \
  include/liblvgl/libs/qrcode/../../widgets/canvas/../image/lv_image.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_image.h \
+ include/liblvgl/libs/qrcode/../../widgets/canvas/../../draw/lv_draw_image.h \
  include/liblvgl/libs/qrcode/lv_qrcode.h \
  include/liblvgl/libs/qrcode/../../lv_conf_internal.h \
  include/liblvgl/libs/qrcode/../../misc/lv_color.h \
@@ -380,13 +365,13 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/widgets/slider/../bar/../../core/lv_obj.h \
  include/liblvgl/widgets/slider/../bar/../../misc/lv_anim.h \
  include/liblvgl/widgets/slider/../bar/../label/lv_label.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/font/lv_font.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/font/lv_symbol_def.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_text.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../lv_conf_internal.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../misc/lv_types.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../core/lv_obj.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../font/lv_font.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../font/lv_symbol_def.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../misc/lv_text.h \
+ include/liblvgl/widgets/slider/../bar/../label/../../draw/lv_draw.h \
  include/liblvgl/widgets/slider/lv_slider.h \
  include/liblvgl/widgets/slider/../bar/lv_bar.h \
  include/liblvgl/widgets/switch/lv_switch_private.h \
@@ -633,7 +618,7 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/liblvgl/drivers/display/st7796/lv_st7796.h \
  include/liblvgl/drivers/display/st7796/../lcd/lv_lcd_generic_mipi.h \
  include/liblvgl/drivers/display/renesas_glcdc/lv_renesas_glcdc.h \
- C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/display/lv_display.h \
+ include/liblvgl/drivers/display/renesas_glcdc/../../../display/lv_display.h \
  include/liblvgl/drivers/display/st_ltdc/lv_st_ltdc.h \
  include/liblvgl/drivers/display/st_ltdc/../../../lv_conf_internal.h \
  include/liblvgl/drivers/nuttx/lv_nuttx_entry.h \
@@ -666,53 +651,32 @@ bin/main.cpp.o: src/main.cpp include/lemlib/api.hpp \
  include/pros/error.h include/pros/rotation.h include/pros/rtos.h \
  include/pros/screen.h include/pros/colors.h include/pros/vision.h \
  include/pros/adi.hpp include/pros/ai_vision.hpp include/pros/ai_vision.h \
- include/pros/colors.hpp include/pros/device.hpp \
- include/pros/distance.hpp include/pros/distance.h include/pros/gps.hpp \
- include/pros/gps.h include/pros/imu.hpp include/pros/link.hpp \
+ include/pros/device.hpp include/pros/misc.hpp include/pros/misc.h \
+ include/pros/rtos.hpp include/pros/rtos.h include/pros/colors.hpp \
+ include/pros/device.hpp include/pros/distance.hpp \
+ include/pros/distance.h include/pros/gps.hpp include/pros/gps.h \
+ include/pros/imu.hpp include/pros/imu.h include/pros/link.hpp \
  include/pros/link.h include/pros/llemu.hpp include/liblvgl/llemu.hpp \
  include/pros/misc.hpp include/pros/motor_group.hpp \
+ include/pros/abstract_motor.hpp include/pros/motors.h \
+ include/pros/rtos.hpp include/pros/colors.hpp include/pros/motors.hpp \
  include/pros/motors.hpp include/pros/optical.hpp include/pros/optical.h \
- include/pros/rotation.hpp include/pros/rtos.hpp include/pros/screen.hpp \
- include/pros/screen.h include/pros/vision.hpp include/pros/vision.h \
- include/robot_config.h include/main.h include/autonomous.h \
- include/subsystems/intake.h include/subsystems/outtake.h \
+ include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
+ include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
+ include/pros/vision.h include/autonomous.h include/curves.h \
+ include/lemlib/api.hpp include/lemlib/pid.hpp include/lemlib/pose.hpp \
+ include/lemlib/util.hpp include/lemlib/chassis/chassis.hpp \
+ include/pros/imu.hpp include/lemlib/asset.hpp \
+ include/lemlib/chassis/trackingWheel.hpp include/pros/motor_group.hpp \
+ include/pros/adi.hpp include/pros/rotation.hpp \
+ include/lemlib/exitcondition.hpp include/lemlib/driveCurve.hpp \
+ include/lemlib/logger/logger.hpp include/fmt/core.h include/fmt/format.h \
+ include/fmt/core.h include/fmt/format-inl.h \
+ include/lemlib/logger/baseSink.hpp include/fmt/args.h \
+ include/lemlib/logger/message.hpp include/lemlib/logger/infoSink.hpp \
+ include/lemlib/logger/telemetrySink.hpp include/robot_config.h \
+ include/main.h include/subsystems/intake.h include/subsystems/outtake.h \
  include/subsystems/pneumatics.h
-include/lemlib/api.hpp:
-include/lemlib/pid.hpp:
-include/lemlib/pose.hpp:
-include/lemlib/util.hpp:
-include/lemlib/chassis/chassis.hpp:
-include/pros/rtos.hpp:
-include/pros/rtos.h:
-include/pros/imu.hpp:
-include/pros/device.hpp:
-include/pros/misc.hpp:
-include/pros/misc.h:
-include/pros/imu.h:
-include/lemlib/asset.hpp:
-include/lemlib/chassis/trackingWheel.hpp:
-include/pros/motors.hpp:
-include/pros/abstract_motor.hpp:
-include/pros/motors.h:
-include/pros/rtos.hpp:
-include/pros/motor_group.hpp:
-include/pros/colors.hpp:
-include/pros/adi.hpp:
-include/pros/adi.h:
-include/pros/rotation.hpp:
-include/pros/rotation.h:
-include/lemlib/exitcondition.hpp:
-include/lemlib/driveCurve.hpp:
-include/lemlib/logger/logger.hpp:
-include/fmt/core.h:
-include/fmt/format.h:
-include/fmt/core.h:
-include/fmt/format-inl.h:
-include/lemlib/logger/baseSink.hpp:
-include/fmt/args.h:
-include/lemlib/logger/message.hpp:
-include/lemlib/logger/infoSink.hpp:
-include/lemlib/logger/telemetrySink.hpp:
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -722,6 +686,7 @@ include/pros/device.h:
 include/pros/distance.h:
 include/pros/error.h:
 include/pros/ext_adi.h:
+include/pros/adi.h:
 include/pros/adi.h:
 include/pros/gps.h:
 include/pros/imu.h:
@@ -746,36 +711,36 @@ include/liblvgl/core/../draw/../misc/../font/../lv_conf_internal.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/lv_types.h:
 include/liblvgl/core/../draw/../misc/../font/lv_symbol_def.h:
 include/liblvgl/core/../draw/../misc/../font/../draw/lv_draw_buf.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_math.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_assert.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_log.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/stdlib/lv_mem.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/stdlib/lv_string.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_palette.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color_op.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/stdlib/lv_string.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_types.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_area.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_types.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_math.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_color.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_assert.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_log.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/stdlib/lv_mem.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/stdlib/lv_string.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_types.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_palette.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_color.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../misc/lv_color_op.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../stdlib/lv_string.h:
 include/liblvgl/core/../draw/../misc/../font/../draw/lv_image_dsc.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
+include/liblvgl/core/../draw/../misc/../font/../draw/../lv_conf_internal.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/lv_area.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache_entry.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/osal/lv_os.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/osal/lv_os_none.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/osal/lv_os.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_types.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/osal/lv_os_none.h:
+include/liblvgl/core/../draw/../misc/../font/../misc/cache/../lv_types.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache_private.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_cache_lru_rb.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_image_cache.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h:
 include/liblvgl/core/../draw/../misc/../font/../misc/cache/lv_image_header_cache.h:
 include/liblvgl/core/../draw/../misc/lv_color.h:
 include/liblvgl/core/../draw/../misc/lv_area.h:
@@ -794,14 +759,14 @@ include/liblvgl/core/../draw/../misc/../stdlib/../misc/lv_types.h:
 include/liblvgl/core/../draw/../misc/lv_assert.h:
 include/liblvgl/core/../draw/../misc/lv_bidi.h:
 include/liblvgl/core/../draw/../misc/../layouts/lv_layout.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
+include/liblvgl/core/../draw/../misc/../layouts/../lv_conf_internal.h:
+include/liblvgl/core/../draw/../misc/../layouts/../misc/lv_types.h:
 include/liblvgl/core/../draw/../misc/../layouts/flex/lv_flex.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h:
+include/liblvgl/core/../draw/../misc/../layouts/flex/../../lv_conf_internal.h:
+include/liblvgl/core/../draw/../misc/../layouts/flex/../../misc/lv_area.h:
 include/liblvgl/core/../draw/../misc/../layouts/grid/lv_grid.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h:
+include/liblvgl/core/../draw/../misc/../layouts/grid/../../lv_conf_internal.h:
+include/liblvgl/core/../draw/../misc/../layouts/grid/../../misc/lv_area.h:
 include/liblvgl/core/../draw/../misc/lv_style_gen.h:
 include/liblvgl/core/../draw/../misc/lv_text.h:
 include/liblvgl/core/../draw/../misc/lv_profiler.h:
@@ -821,7 +786,7 @@ include/liblvgl/core/../draw/sw/../../display/../misc/lv_types.h:
 include/liblvgl/core/../draw/sw/../../display/../misc/lv_timer.h:
 include/liblvgl/core/../draw/sw/../../display/../misc/lv_event.h:
 include/liblvgl/core/../draw/sw/../../display/../misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
+include/liblvgl/core/../draw/sw/../../display/../misc/../lv_conf_internal.h:
 include/liblvgl/core/../draw/sw/../../display/../misc/lv_array.h:
 include/liblvgl/core/../draw/sw/../../display/../misc/lv_color.h:
 include/liblvgl/core/../draw/sw/../../display/../draw/lv_draw.h:
@@ -868,39 +833,39 @@ include/liblvgl/core/../osal/lv_os.h:
 include/liblvgl/core/../others/sysmon/lv_sysmon.h:
 include/liblvgl/core/../others/sysmon/../../misc/lv_timer.h:
 include/liblvgl/core/../others/sysmon/../../others/observer/lv_observer.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_style.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_color.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_assert.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_tree.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_anim.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/display/lv_display.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_pos.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_scroll.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_style.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_bidi.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_style_gen.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_style.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_draw.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_rect.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_label.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_image.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_line.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_arc.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_class.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_property.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_event.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_event.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/indev/lv_indev.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_group.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_ll.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_area.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_timer.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_event.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_group.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_types.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_style.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_area.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_color.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_assert.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_tree.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_anim.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/display/lv_display.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_pos.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_scroll.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_style.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_bidi.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_style_gen.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_style.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_draw.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_rect.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_label.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_image.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_line.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw_arc.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_class.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_property.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_event.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_event.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/indev/lv_indev.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_group.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_ll.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_area.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_timer.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_event.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_group.h:
 include/liblvgl/core/../stdlib/builtin/lv_tlsf.h:
 include/liblvgl/core/../stdlib/builtin/../../lv_conf_internal.h:
 include/liblvgl/core/../stdlib/builtin/../../osal/lv_os.h:
@@ -974,16 +939,16 @@ include/liblvgl/others/observer/lv_observer.h:
 include/liblvgl/libs/qrcode/lv_qrcode_private.h:
 include/liblvgl/libs/qrcode/../../widgets/canvas/lv_canvas_private.h:
 include/liblvgl/libs/qrcode/../../widgets/canvas/../image/lv_image_private.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj_private.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj_private.h:
 include/liblvgl/libs/qrcode/../../widgets/canvas/../image/lv_image.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_fs.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/lv_conf_internal.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/core/lv_obj.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/misc/lv_fs.h:
+C:/Users/JimArnold/Documents/GitHub/Main-Drive/include/liblvgl/draw/lv_draw.h:
 include/liblvgl/libs/qrcode/../../widgets/canvas/lv_canvas.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
+include/liblvgl/libs/qrcode/../../widgets/canvas/../../lv_conf_internal.h:
 include/liblvgl/libs/qrcode/../../widgets/canvas/../image/lv_image.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw_image.h:
+include/liblvgl/libs/qrcode/../../widgets/canvas/../../draw/lv_draw_image.h:
 include/liblvgl/libs/qrcode/lv_qrcode.h:
 include/liblvgl/libs/qrcode/../../lv_conf_internal.h:
 include/liblvgl/libs/qrcode/../../misc/lv_color.h:
@@ -1104,13 +1069,13 @@ include/liblvgl/widgets/slider/../bar/../../lv_conf_internal.h:
 include/liblvgl/widgets/slider/../bar/../../core/lv_obj.h:
 include/liblvgl/widgets/slider/../bar/../../misc/lv_anim.h:
 include/liblvgl/widgets/slider/../bar/../label/lv_label.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/lv_conf_internal.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_types.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/core/lv_obj.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/font/lv_font.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/font/lv_symbol_def.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/misc/lv_text.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/draw/lv_draw.h:
+include/liblvgl/widgets/slider/../bar/../label/../../lv_conf_internal.h:
+include/liblvgl/widgets/slider/../bar/../label/../../misc/lv_types.h:
+include/liblvgl/widgets/slider/../bar/../label/../../core/lv_obj.h:
+include/liblvgl/widgets/slider/../bar/../label/../../font/lv_font.h:
+include/liblvgl/widgets/slider/../bar/../label/../../font/lv_symbol_def.h:
+include/liblvgl/widgets/slider/../bar/../label/../../misc/lv_text.h:
+include/liblvgl/widgets/slider/../bar/../label/../../draw/lv_draw.h:
 include/liblvgl/widgets/slider/lv_slider.h:
 include/liblvgl/widgets/slider/../bar/lv_bar.h:
 include/liblvgl/widgets/switch/lv_switch_private.h:
@@ -1372,7 +1337,7 @@ include/liblvgl/drivers/display/st7789/../lcd/lv_lcd_generic_mipi.h:
 include/liblvgl/drivers/display/st7796/lv_st7796.h:
 include/liblvgl/drivers/display/st7796/../lcd/lv_lcd_generic_mipi.h:
 include/liblvgl/drivers/display/renesas_glcdc/lv_renesas_glcdc.h:
-C:/Users/IJiae/Downloads/Main-Drive/include/liblvgl/display/lv_display.h:
+include/liblvgl/drivers/display/renesas_glcdc/../../../display/lv_display.h:
 include/liblvgl/drivers/display/st_ltdc/lv_st_ltdc.h:
 include/liblvgl/drivers/display/st_ltdc/../../../lv_conf_internal.h:
 include/liblvgl/drivers/nuttx/lv_nuttx_entry.h:
@@ -1414,6 +1379,11 @@ include/pros/vision.h:
 include/pros/adi.hpp:
 include/pros/ai_vision.hpp:
 include/pros/ai_vision.h:
+include/pros/device.hpp:
+include/pros/misc.hpp:
+include/pros/misc.h:
+include/pros/rtos.hpp:
+include/pros/rtos.h:
 include/pros/colors.hpp:
 include/pros/device.hpp:
 include/pros/distance.hpp:
@@ -1421,24 +1391,55 @@ include/pros/distance.h:
 include/pros/gps.hpp:
 include/pros/gps.h:
 include/pros/imu.hpp:
+include/pros/imu.h:
 include/pros/link.hpp:
 include/pros/link.h:
 include/pros/llemu.hpp:
 include/liblvgl/llemu.hpp:
 include/pros/misc.hpp:
 include/pros/motor_group.hpp:
+include/pros/abstract_motor.hpp:
+include/pros/motors.h:
+include/pros/rtos.hpp:
+include/pros/colors.hpp:
+include/pros/motors.hpp:
 include/pros/motors.hpp:
 include/pros/optical.hpp:
 include/pros/optical.h:
 include/pros/rotation.hpp:
+include/pros/rotation.h:
 include/pros/rtos.hpp:
 include/pros/screen.hpp:
 include/pros/screen.h:
 include/pros/vision.hpp:
 include/pros/vision.h:
+include/autonomous.h:
+include/curves.h:
+include/lemlib/api.hpp:
+include/lemlib/pid.hpp:
+include/lemlib/pose.hpp:
+include/lemlib/util.hpp:
+include/lemlib/chassis/chassis.hpp:
+include/pros/imu.hpp:
+include/lemlib/asset.hpp:
+include/lemlib/chassis/trackingWheel.hpp:
+include/pros/motor_group.hpp:
+include/pros/adi.hpp:
+include/pros/rotation.hpp:
+include/lemlib/exitcondition.hpp:
+include/lemlib/driveCurve.hpp:
+include/lemlib/logger/logger.hpp:
+include/fmt/core.h:
+include/fmt/format.h:
+include/fmt/core.h:
+include/fmt/format-inl.h:
+include/lemlib/logger/baseSink.hpp:
+include/fmt/args.h:
+include/lemlib/logger/message.hpp:
+include/lemlib/logger/infoSink.hpp:
+include/lemlib/logger/telemetrySink.hpp:
 include/robot_config.h:
 include/main.h:
-include/autonomous.h:
 include/subsystems/intake.h:
 include/subsystems/outtake.h:
 include/subsystems/pneumatics.h:
