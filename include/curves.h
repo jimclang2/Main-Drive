@@ -15,7 +15,8 @@ enum class CurveType {
   CUBED,       // x³ — very smooth low-end, snappy top-end
   EXPONENTIAL, // e^(k*x) — tunable aggressiveness
   S_CURVE,     // Sigmoid — smooth start AND end
-  PIECEWISE    // Two-zone linear — simple and predictable
+  PIECEWISE,   // Two-zone linear — simple and predictable
+  PLATEAU      // Custom 3-zone curve with a precise "cruising speed" flat spot
 };
 
 /**

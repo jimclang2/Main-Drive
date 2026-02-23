@@ -80,6 +80,31 @@ int applyCurve(int input, CurveType curve, double param) {
             }
             break;
         }
+
+        // ── PLATEAU (STEPPED) ───────────────────────────────
+        // Custom 3-zone curve:
+        //   Zone 1: Smooth quadratic ramp to the start of the plateau
+        //   Zone 2: The "Plateau" - a wide input range mapping to a very tight output range
+        //           (e.g. 40%-82% stick mapping to ~66%-80% power)
+        //   Zone 3: Steep ramp to full speed at 100% stick
+        case CurveType::PLATEAU: {
+            // These settings control exactly where the 'flat spot' is positioned.
+            double p_start = 0.40;  // Plateau starts at 40% joystick
+            double p_end   = 0.82;  // Plateau ends at 82% joystick
+            double v_start = 0.66;  // Power at plateau start = 66% (~83 volts)
+            double v_end   = 0.80;  // Power at plateau end   = 80% (~101 volts)
+            if (ax <= p_start) {
+                // Zone 1: Gentle quadratic curve matching `v_start` exactly at `p_start`
+                result = (ax * ax) / (p_start * p_start) * v_start;
+            } else if (ax <= p_end) {
+                // Zone 2: The Plateau. Very shallow slope where inputs barely change output.
+                result = v_start + (ax - p_start) * ((v_end - v_start) / (p_end - p_start));
+            } else {
+                // Zone 3: Steep linear finish from `v_end` to 100% power.
+                result = v_end + (ax - p_end) * ((1.0 - v_end) / (1.0 - p_end));
+            }
+            break;
+        }
     }
 
     // Scale back to -127..127 and restore sign
@@ -96,12 +121,13 @@ std::string getCurveName(CurveType curve) {
         case CurveType::EXPONENTIAL: return "Exponential";
         case CurveType::S_CURVE:     return "S-Curve";
         case CurveType::PIECEWISE:   return "Piecewise";
+        case CurveType::PLATEAU:     return "Plateau";
         default:                     return "Unknown";
     }
 }
 
-// Cycle to the next curve (wraps back to LINEAR after PIECEWISE)
+// Cycle to the next curve (wraps back to LINEAR after PLATEAU)
 CurveType nextCurve(CurveType current) {
-    int next = (static_cast<int>(current) + 1) % 6;
+    int next = (static_cast<int>(current) + 1) % 7;
     return static_cast<CurveType>(next);
 }
