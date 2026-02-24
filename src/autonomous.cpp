@@ -5,6 +5,35 @@
 #include <ctime>
 
 
+/**
+ * Shakes the bot left and right (~5 degrees each direction) for the given
+ * duration in milliseconds. Useful for unsticking balls during unloading.
+ *
+ * Usage: shakeBot(2000);  // shake for 2 seconds while unloading
+ */
+void shakeBot(int durationMs) {
+  const int SHAKE_POWER = 60;     // motor power for each shake (tune if needed)
+  const int SHAKE_INTERVAL = 150; // ms per half-cycle (left or right)
+
+  uint32_t startTime = pros::millis();
+
+  while ((pros::millis() - startTime) < (uint32_t)durationMs) {
+    // Turn left: left motors backward, right motors forward
+    left_motors.move(-SHAKE_POWER);
+    right_motors.move(SHAKE_POWER);
+    pros::delay(SHAKE_INTERVAL);
+
+    // Turn right: left motors forward, right motors backward
+    left_motors.move(SHAKE_POWER);
+    right_motors.move(-SHAKE_POWER);
+    pros::delay(SHAKE_INTERVAL);
+  }
+
+  // Stop and settle
+  left_motors.brake();
+  right_motors.brake();
+}
+
 
 void skills_auton() { 
 chassis.setPose(0, 0, 270);
